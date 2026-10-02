@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Ijuí para Windows e Android · Município de Ijuí</title>
+<meta name="description" content="Baixe o aplicativo Sistema Ijuí: os sistemas da Prefeitura de Ijuí num só lugar, com login único e atualização automática.">
+<meta name="theme-color" content="#081C52">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<!--
+  Página de download do aplicativo Sistema Ijuí (Windows e Android), em
+  ijui.net/app. É a ÚNICA coisa que o ijui.net mostra: o sistema mesmo mora
+  noutro endereço (Cloudflare Pages, só para os apps). Esta pasta (baixar/) é
+  publicada pelo GitHub Pages do repositório público sistema-ijui (o
+  workflow publicar-baixar.yml copia). Os instaladores moram
+  nas releases do repositório público pacificoijui/sistema-ijui; os links
+  abaixo sempre apontam para a versão mais nova. Ver baixar/LEIA-ME.md,
+  desktop/LEIA-ME.md e celular/LEIA-ME.md.
+-->
+<style>
+:root{
+  --noite:#081C52;--marinho:#12306B;--real:#1440A8;--real-2:#1E52CC;
+  --vermelho:#E3242B;--laranja:#F26B21;--amarelo:#FFC20E;--verde:#8CC63F;--verde-2:#1E7A34;--petroleo:#0B6E7F;
+  --fundo:#F2F5FB;--tinta:#101A33;--tinta-2:#5A6685;--linha:#E3E8F4;
+  --sombra:0 1px 2px rgba(8,28,82,.06),0 8px 28px -12px rgba(8,28,82,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sora',system-ui,sans-serif;background:var(--fundo);color:var(--tinta);-webkit-font-smoothing:antialiased}
+.hero{position:relative;overflow:hidden;color:#fff;padding:clamp(28px,5vw,56px) 16px clamp(80px,9vw,110px);
+  background:radial-gradient(1200px 600px at 15% -10%,#1E52CC 0%,transparent 55%),linear-gradient(160deg,#0D2B7E 0%,#081C52 70%)}
+.mosaico{position:absolute;inset:0;pointer-events:none;opacity:.9}
+.mosaico svg{position:absolute;right:-8%;top:-20%;height:150%;min-width:640px}
+.hero-in{position:relative;z-index:2;max-width:1000px;margin:0 auto}
+.marca{display:flex;align-items:center;gap:16px;margin-bottom:clamp(24px,4vw,40px)}
+.marca img{height:56px;filter:brightness(0) invert(1)}
+.marca .m1{font-weight:800;font-size:19px}
+.marca .m2{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#AFC4F5;margin-top:4px}
+h1{font-size:clamp(32px,5.4vw,54px);font-weight:800;letter-spacing:-.02em;line-height:1.04;max-width:640px}
+.fio{background:linear-gradient(90deg,var(--amarelo),var(--laranja) 45%,var(--vermelho));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin-top:14px;color:#C6D4F7;font-size:clamp(14px,1.8vw,16.5px);line-height:1.6;max-width:560px}
+.baixar{display:inline-flex;align-items:center;gap:12px;margin-top:28px;background:#fff;color:var(--noite);text-decoration:none;
+  font-weight:800;font-size:16px;padding:15px 24px;border-radius:14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.55);transition:transform .15s}
+.baixar:hover{transform:translateY(-2px)}
+.baixar img{width:30px;height:30px}
+.req{margin-top:12px;font:500 12.5px 'Space Grotesk',monospace;color:#AFC4F5}
+.botoes{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-start}
+.botoes>div{display:flex;flex-direction:column}
+.baixar.android{background:var(--amarelo)}
+.baixar .rob{font-size:24px;line-height:1}
+main{max-width:1000px;margin:-56px auto 0;padding:0 16px 48px;position:relative;z-index:3}
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:20px;box-shadow:var(--sombra);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--cor)}
+.num{width:34px;height:34px;border-radius:10px;background:var(--cor);color:#fff;font-weight:800;display:grid;place-items:center;margin-bottom:12px}
+.card h2{font-size:16px;font-weight:700;margin-bottom:6px}
+.card p{font-size:13.5px;color:var(--tinta-2);line-height:1.6}
+.card b{color:var(--tinta)}
+.aviso{margin-top:18px;background:#fff;border:1px solid var(--linha);border-radius:18px;padding:20px;box-shadow:var(--sombra);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.aviso .ic{font-size:26px}
+.aviso h3{font-size:15px;margin-bottom:6px}
+.aviso p{font-size:13.5px;color:var(--tinta-2);line-height:1.6}
+.aviso p+p{margin-top:8px}
+.aviso ol{margin:8px 0 0 18px;font-size:13.5px;color:var(--tinta-2);line-height:1.7}
+footer{text-align:center;font-size:12px;color:var(--tinta-2);padding:8px 16px 36px}
+@media (max-width:560px){.marca img{height:44px}.aviso{grid-template-columns:1fr}.baixar{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="mosaico" aria-hidden="true">
+    <svg viewBox="0 0 700 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M700 -60 C 520 120, 470 420, 560 760 C 600 830, 700 900, 700 900 Z" fill="#E3242B" opacity=".85"/>
+      <path d="M700 40 C 560 220, 530 470, 610 800 L700 900 Z" fill="#F26B21" opacity=".9"/>
+      <path d="M540 -80 C 400 140, 380 460, 480 900 L 620 900 C 520 560, 540 240, 640 -80 Z" fill="#8CC63F" opacity=".65"/>
+      <path d="M420 -60 C 300 200, 300 520, 400 900 L 470 900 C 380 540, 390 220, 500 -60 Z" fill="#0B6E7F" opacity=".55"/>
+      <path d="M640 300 C 590 420, 585 560, 620 700 C 660 600, 665 430, 640 300 Z" fill="#FFC20E" opacity=".95"/>
+    </svg>
+  </div>
+  <div class="hero-in">
+    <div class="marca">
+      <img src="logo-ijui.png" alt="Município de Ijuí">
+      <div><div class="m1">Município de Ijuí</div><div class="m2">Capital Mundial das Etnias</div></div>
+    </div>
+    <h1>Sistema <span class="fio">Ijuí</span> para Windows e Android</h1>
+    <p class="sub">Os sistemas da Prefeitura num aplicativo só. Você entra uma vez, com o usuário que o administrador cadastrou, e vê só os módulos liberados para você — no computador e no celular.</p>
+    <div class="botoes" id="botoes">
+      <div id="blocoWindows">
+        <a class="baixar" id="linkBaixar" href="https://github.com/pacificoijui/sistema-ijui/releases/latest/download/Sistema-Ijui-Setup.exe">
+          <img src="icone.png" alt=""> Baixar para Windows
+        </a>
+        <div class="req">Windows 10 ou 11 · 64 bits · não precisa ser administrador</div>
+      </div>
+      <div id="blocoAndroid">
+        <a class="baixar android" id="linkAndroid" href="https://github.com/pacificoijui/sistema-ijui/releases/download/android/Sistema-Ijui.apk">
+          <span class="rob" aria-hidden="true">📱</span> Baixar para Android
+        </a>
+        <div class="req">Android 7 ou mais novo · baixe e instale no próprio celular</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="grade">
+    <div class="card" style="--cor:#1440A8">
+      <div class="num">1</div>
+      <h2>Instale</h2>
+      <p>Abra o arquivo baixado. A instalação é automática e cria o atalho <b>Sistema Ijuí</b> na Área de Trabalho e no Menu Iniciar.</p>
+    </div>
+    <div class="card" style="--cor:#E3242B">
+      <div class="num">2</div>
+      <h2>Entre uma vez</h2>
+      <p>Digite o <b>usuário</b> e a <b>senha</b> que o administrador passou. Nas próximas vezes o app já abre direto, sem pedir de novo.</p>
+    </div>
+    <div class="card" style="--cor:#1E7A34">
+      <div class="num">3</div>
+      <h2>Pronto</h2>
+      <p>Os módulos liberados aparecem na barra da esquerda. O app <b>se atualiza sozinho</b>: não precisa baixar de novo quando sair versão nova.</p>
+    </div>
+  </div>
+
+  <div class="aviso">
+    <div class="ic">🛡️</div>
+    <div>
+      <h3>Se o Windows mostrar “O Windows protegeu o computador”</h3>
+      <p>Clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>. O aviso aparece porque o aplicativo ainda não tem uma assinatura digital comprada — não quer dizer que haja algo errado com ele.</p>
+      <p>Não tem usuário? Peça ao administrador do sistema. Esqueceu a senha? Também é com ele.</p>
+    </div>
+  </div>
+
+  <div class="aviso" id="avisoAndroid">
+    <div class="ic">📱</div>
+    <div>
+      <h3>No celular Android</h3>
+      <ol>
+        <li>Toque em <b>Baixar para Android</b> no próprio celular e abra o arquivo <b>Sistema-Ijui.apk</b>.</li>
+        <li>Se aparecer <b>“Por segurança, não é permitido instalar apps desta fonte”</b>, toque em <b>Configurações</b>, ligue <b>Permitir desta fonte</b> e volte.</li>
+        <li>Toque em <b>Instalar</b>. O ícone <b>Sistema Ijuí</b> aparece na tela inicial.</li>
+        <li>Entre com o mesmo <b>usuário e senha</b> do computador. Quem entra com a conta Google: no computador, no menu da conta, use <b>Criar senha para o celular</b>.</li>
+      </ol>
+      <p>O app se atualiza sozinho: as telas vêm do sistema. Quando sair uma versão nova do aplicativo, ele mesmo avisa.</p>
+    </div>
+  </div>
+</main>
+<footer>Prefeitura Municipal de Ijuí · Sistema Ijuí</footer>
+<script>
+  /* No celular Android, o botão do Android vem primeiro */
+  if (/Android/i.test(navigator.userAgent)) {
+    var b = document.getElementById('botoes');
+    b.insertBefore(document.getElementById('blocoAndroid'), b.firstChild);
+  }
+</script>
+</body>
+</html>
