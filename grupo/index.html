@@ -28,7 +28,7 @@
 html,body{margin:0}
 body{min-height:100vh;min-height:100dvh;background:var(--noite);color:var(--texto);font-family:Sora,system-ui,-apple-system,"Segoe UI",sans-serif;
   -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow-x:hidden;position:relative}
-/* o fundo: as faixas das etnias em curva, como no cartão da Agenda */
+/* o fundo: só o azul (sem os arcos coloridos) */
 .fundo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .fundo svg{position:absolute;width:150%;min-width:900px;left:50%;transform:translateX(-50%)}
 .fundo .cima{top:-6%;opacity:.95}.fundo .baixo{bottom:-10%;opacity:.95;transform:translateX(-50%) rotate(180deg)}
@@ -94,18 +94,7 @@ footer img{display:block;margin:0 auto 12px;width:min(320px,70vw);height:auto;op
 </style>
 </head>
 <body>
-<div class="fundo" aria-hidden="true">
-  <svg class="cima" viewBox="0 0 1400 300" preserveAspectRatio="none"><g fill="none" stroke-width="22" stroke-linecap="round">
-    <path d="M-50 60 C 350 200, 900 -40, 1450 120" stroke="#E3242B"/><path d="M-50 92 C 350 232, 900 -8, 1450 152" stroke="#F26B21"/>
-    <path d="M-50 124 C 350 264, 900 24, 1450 184" stroke="#FFC20E"/><path d="M-50 156 C 350 296, 900 56, 1450 216" stroke="#8CC63F"/>
-    <path d="M-50 188 C 350 328, 900 88, 1450 248" stroke="#1E7A34"/><path d="M-50 220 C 350 360, 900 120, 1450 280" stroke="#0B6E7F"/>
-    <path d="M-50 252 C 350 392, 900 152, 1450 312" stroke="#1E52CC"/></g></svg>
-  <svg class="baixo" viewBox="0 0 1400 300" preserveAspectRatio="none"><g fill="none" stroke-width="22" stroke-linecap="round">
-    <path d="M-50 60 C 350 200, 900 -40, 1450 120" stroke="#E3242B"/><path d="M-50 92 C 350 232, 900 -8, 1450 152" stroke="#F26B21"/>
-    <path d="M-50 124 C 350 264, 900 24, 1450 184" stroke="#FFC20E"/><path d="M-50 156 C 350 296, 900 56, 1450 216" stroke="#8CC63F"/>
-    <path d="M-50 188 C 350 328, 900 88, 1450 248" stroke="#1E7A34"/><path d="M-50 220 C 350 360, 900 120, 1450 280" stroke="#0B6E7F"/>
-    <path d="M-50 252 C 350 392, 900 152, 1450 312" stroke="#1E52CC"/></g></svg>
-</div>
+<div class="fundo" aria-hidden="true"></div>
 
 <main>
   <article class="cartao">
